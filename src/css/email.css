@@ -1,0 +1,192 @@
+/* =====================================================
+   CloudPilot Mail — List & Email Detail Styles
+   ===================================================== */
+
+/* ── Lists ── */
+.list-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cp-space-2);
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--cp-space-3);
+  padding: var(--cp-space-3);
+  background: var(--cp-bg-elevated);
+  border: 1px solid var(--cp-border-primary);
+  border-radius: var(--cp-radius-md);
+  cursor: pointer;
+  transition: all var(--cp-duration) var(--cp-ease);
+}
+
+.list-item:hover {
+  background: var(--cp-bg-hover);
+  border-color: var(--cp-border-secondary);
+  box-shadow: var(--cp-shadow-sm);
+}
+
+.list-item-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--cp-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--cp-weight-bold);
+  font-size: var(--cp-text-sm);
+  color: white;
+  flex-shrink: 0;
+  text-transform: uppercase;
+}
+
+.list-item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.list-item-title {
+  font-size: var(--cp-text-sm);
+  font-weight: var(--cp-weight-semibold);
+  color: var(--cp-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-item-subtitle {
+  font-size: var(--cp-text-xs);
+  color: var(--cp-text-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1px;
+}
+
+.list-item-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.list-item-time {
+  font-size: var(--cp-text-xs);
+  color: var(--cp-text-tertiary);
+  white-space: nowrap;
+}
+
+.unread-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--cp-radius-full);
+  background: var(--cp-blue-500);
+}
+
+/* ── Search Bar ── */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--cp-space-2);
+  padding: var(--cp-space-2) var(--cp-space-3);
+  background: var(--cp-bg-elevated);
+  border: 1px solid var(--cp-border-primary);
+  border-radius: var(--cp-radius-md);
+  margin-bottom: var(--cp-space-3);
+  transition: border-color var(--cp-duration) var(--cp-ease);
+}
+.search-bar:focus-within {
+  border-color: var(--cp-border-focus);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+}
+.search-bar svg {
+  width: 16px;
+  height: 16px;
+  color: var(--cp-text-tertiary);
+  flex-shrink: 0;
+}
+.search-bar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: var(--cp-text-sm);
+  color: var(--cp-text-primary);
+  font-family: var(--cp-font-sans);
+  outline: none;
+}
+.search-bar input::placeholder { color: var(--cp-text-tertiary); }
+
+/* ── Email Detail ── */
+.email-detail { padding: 0; }
+
+.email-detail-header {
+  padding: var(--cp-space-4);
+  border-bottom: 1px solid var(--cp-border-primary);
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.email-detail-subject {
+  font-size: var(--cp-text-md);
+  font-weight: var(--cp-weight-bold);
+  margin-bottom: var(--cp-space-2);
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.email-detail-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cp-space-1);
+  font-size: var(--cp-text-xs);
+  color: var(--cp-text-tertiary);
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
+
+.email-detail-meta span {
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
+
+.email-detail-body {
+  padding: var(--cp-space-4);
+  font-size: var(--cp-text-sm);
+  line-height: 1.7;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  overflow-x: auto;
+}
+
+.email-detail-body iframe {
+  width: 100%;
+  max-width: 100%;
+  border: none;
+  border-radius: var(--cp-radius-sm);
+  background: white;
+}
+
+.verification-code-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--cp-space-3);
+  padding: var(--cp-space-3) var(--cp-space-4);
+  background: rgba(59,130,246,0.08);
+  border: 1px solid rgba(59,130,246,0.2);
+  border-radius: var(--cp-radius-md);
+  margin: var(--cp-space-3) var(--cp-space-4);
+}
+
+.verification-code-bar .code {
+  font-family: var(--cp-font-mono);
+  font-size: var(--cp-text-lg);
+  font-weight: var(--cp-weight-bold);
+  color: var(--cp-blue-600);
+  letter-spacing: 0.15em;
+}
+
+[data-theme="dark"] .verification-code-bar .code {
+  color: var(--cp-blue-400);
+}

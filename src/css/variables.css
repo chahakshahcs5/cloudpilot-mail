@@ -1,0 +1,135 @@
+/* =====================================================
+   CloudPilot Mail — Design System Tokens
+   ===================================================== */
+
+:root {
+  /* ── Brand palette ── */
+  --cp-blue-50:  #EFF6FF;
+  --cp-blue-100: #DBEAFE;
+  --cp-blue-200: #BFDBFE;
+  --cp-blue-300: #93C5FD;
+  --cp-blue-400: #60A5FA;
+  --cp-blue-500: #3B82F6;
+  --cp-blue-600: #2563EB;
+  --cp-blue-700: #1D4ED8;
+
+  --cp-violet-400: #A78BFA;
+  --cp-violet-500: #8B5CF6;
+  --cp-violet-600: #7C3AED;
+
+  --cp-emerald-400: #34D399;
+  --cp-emerald-500: #10B981;
+
+  --cp-amber-400: #FBBF24;
+  --cp-amber-500: #F59E0B;
+
+  --cp-rose-400: #FB7185;
+  --cp-rose-500: #F43F5E;
+
+  /* ── Gradient shortcuts ── */
+  --cp-gradient-brand: linear-gradient(135deg, var(--cp-blue-500) 0%, var(--cp-violet-500) 100%);
+  --cp-gradient-brand-hover: linear-gradient(135deg, var(--cp-blue-600) 0%, var(--cp-violet-600) 100%);
+
+  /* ── Typography ── */
+  --cp-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --cp-font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  --cp-text-xs:   0.6875rem;  /* 11px */
+  --cp-text-sm:   0.75rem;    /* 12px */
+  --cp-text-base: 0.8125rem;  /* 13px */
+  --cp-text-md:   0.875rem;   /* 14px */
+  --cp-text-lg:   1rem;       /* 16px */
+  --cp-text-xl:   1.25rem;    /* 20px */
+  --cp-text-2xl:  1.5rem;     /* 24px */
+
+  --cp-weight-normal:   400;
+  --cp-weight-medium:   500;
+  --cp-weight-semibold: 600;
+  --cp-weight-bold:     700;
+
+  /* ── Spacing ── */
+  --cp-space-1:  0.25rem;
+  --cp-space-2:  0.5rem;
+  --cp-space-3:  0.75rem;
+  --cp-space-4:  1rem;
+  --cp-space-5:  1.25rem;
+  --cp-space-6:  1.5rem;
+  --cp-space-8:  2rem;
+  --cp-space-10: 2.5rem;
+
+  /* ── Borders & Radii ── */
+  --cp-radius-sm:   6px;
+  --cp-radius-md:   10px;
+  --cp-radius-lg:   14px;
+  --cp-radius-xl:   20px;
+  --cp-radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --cp-shadow-sm:  0 1px 2px rgba(0,0,0,0.05);
+  --cp-shadow-md:  0 4px 12px rgba(0,0,0,0.08);
+  --cp-shadow-lg:  0 8px 24px rgba(0,0,0,0.12);
+  --cp-shadow-glow: 0 0 20px rgba(59,130,246,0.25);
+
+  /* ── Transitions ── */
+  --cp-ease:     cubic-bezier(0.4, 0, 0.2, 1);
+  --cp-duration:  200ms;
+  --cp-duration-slow: 350ms;
+}
+
+/* ============================================
+   LIGHT THEME (default)
+   ============================================ */
+:root,
+[data-theme="light"] {
+  --cp-bg-primary:     #F8FAFC;
+  --cp-bg-secondary:   #FFFFFF;
+  --cp-bg-tertiary:    #F1F5F9;
+  --cp-bg-elevated:    #FFFFFF;
+  --cp-bg-hover:       #F1F5F9;
+  --cp-bg-active:      #E2E8F0;
+  --cp-bg-input:       #FFFFFF;
+  --cp-bg-overlay:     rgba(255,255,255,0.85);
+
+  --cp-border-primary:   #E2E8F0;
+  --cp-border-secondary: #CBD5E1;
+  --cp-border-focus:     var(--cp-blue-500);
+
+  --cp-text-primary:   #0F172A;
+  --cp-text-secondary: #475569;
+  --cp-text-tertiary:  #94A3B8;
+  --cp-text-inverse:   #FFFFFF;
+
+  --cp-scrollbar-thumb: #CBD5E1;
+  --cp-scrollbar-track: transparent;
+}
+
+/* ============================================
+   DARK THEME
+   ============================================ */
+[data-theme="dark"] {
+  --cp-bg-primary:     #0F172A;
+  --cp-bg-secondary:   #1E293B;
+  --cp-bg-tertiary:    #334155;
+  --cp-bg-elevated:    #1E293B;
+  --cp-bg-hover:       #334155;
+  --cp-bg-active:      #475569;
+  --cp-bg-input:       #1E293B;
+  --cp-bg-overlay:     rgba(15,23,42,0.9);
+
+  --cp-border-primary:   #334155;
+  --cp-border-secondary: #475569;
+  --cp-border-focus:     var(--cp-blue-400);
+
+  --cp-text-primary:   #F1F5F9;
+  --cp-text-secondary: #94A3B8;
+  --cp-text-tertiary:  #64748B;
+  --cp-text-inverse:   #0F172A;
+
+  --cp-shadow-sm:  0 1px 3px rgba(0,0,0,0.3);
+  --cp-shadow-md:  0 4px 12px rgba(0,0,0,0.4);
+  --cp-shadow-lg:  0 8px 24px rgba(0,0,0,0.5);
+  --cp-shadow-glow: 0 0 24px rgba(59,130,246,0.3);
+
+  --cp-scrollbar-thumb: #475569;
+  --cp-scrollbar-track: transparent;
+}

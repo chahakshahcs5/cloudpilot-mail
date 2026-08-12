@@ -1,0 +1,142 @@
+/* =====================================================
+   CloudPilot Mail — Header & Navigation Styles
+   ===================================================== */
+
+/* ── App Header ── */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--cp-space-3) var(--cp-space-4);
+  background: var(--cp-bg-secondary);
+  border-bottom: 1px solid var(--cp-border-primary);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--cp-space-2);
+}
+
+.header-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--cp-radius-sm);
+}
+
+.header-title {
+  font-size: var(--cp-text-md);
+  font-weight: var(--cp-weight-bold);
+  background: var(--cp-gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--cp-space-1);
+}
+
+/* ── Worker Selector Bar ── */
+.worker-selector {
+  display: flex;
+  align-items: center;
+  gap: var(--cp-space-2);
+  padding: var(--cp-space-1) var(--cp-space-3);
+  background: var(--cp-bg-tertiary);
+  border-bottom: 1px solid var(--cp-border-primary);
+  flex-shrink: 0;
+}
+
+.worker-selector label {
+  font-size: var(--cp-text-xs);
+  color: var(--cp-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: var(--cp-weight-semibold);
+  white-space: nowrap;
+}
+
+.worker-selector select {
+  flex: 1;
+  font-size: var(--cp-text-sm);
+  padding: var(--cp-space-1) var(--cp-space-2);
+  border-radius: var(--cp-radius-sm);
+  border: 1px solid var(--cp-border-primary);
+  background: var(--cp-bg-input);
+  color: var(--cp-text-primary);
+  font-family: var(--cp-font-sans);
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--cp-duration) var(--cp-ease);
+}
+.worker-selector select:focus {
+  border-color: var(--cp-border-focus);
+  box-shadow: 0 0 0 2px rgba(59,130,246,0.15);
+}
+
+/* ── Tab Navigation ── */
+.tab-nav {
+  display: flex;
+  background: var(--cp-bg-secondary);
+  border-bottom: 1px solid var(--cp-border-primary);
+  flex-shrink: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tab-nav::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: var(--cp-space-2) var(--cp-space-1);
+  font-size: var(--cp-text-xs);
+  font-weight: var(--cp-weight-medium);
+  font-family: var(--cp-font-sans);
+  color: var(--cp-text-tertiary);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--cp-duration) var(--cp-ease);
+  position: relative;
+  white-space: nowrap;
+}
+
+.tab-btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.tab-btn:hover {
+  color: var(--cp-text-secondary);
+  background: var(--cp-bg-hover);
+}
+
+.tab-btn.active {
+  color: var(--cp-blue-500);
+  border-bottom-color: var(--cp-blue-500);
+  font-weight: var(--cp-weight-semibold);
+}
+
+.tab-badge {
+  position: absolute;
+  top: 4px;
+  right: calc(50% - 16px);
+  width: 8px;
+  height: 8px;
+  background: var(--cp-rose-500);
+  border-radius: var(--cp-radius-full);
+  border: 1.5px solid var(--cp-bg-secondary);
+  animation: pulse-dot 2s ease-in-out infinite;
+}

@@ -1,0 +1,115 @@
+/* =====================================================
+   CloudPilot Mail — Settings View Styles
+   ===================================================== */
+
+.settings-section {
+  margin-bottom: var(--cp-space-6);
+}
+
+.worker-card {
+  display: flex;
+  align-items: center;
+  gap: var(--cp-space-3);
+  padding: var(--cp-space-3);
+  background: var(--cp-bg-elevated);
+  border: 1px solid var(--cp-border-primary);
+  border-radius: var(--cp-radius-md);
+  margin-bottom: var(--cp-space-2);
+  transition: all var(--cp-duration) var(--cp-ease);
+}
+.worker-card:hover {
+  border-color: var(--cp-border-secondary);
+  box-shadow: var(--cp-shadow-sm);
+}
+.worker-card.active-worker {
+  border-color: var(--cp-blue-400);
+  background: rgba(59,130,246,0.04);
+}
+
+.worker-card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--cp-radius-md);
+  background: var(--cp-gradient-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+.worker-card-icon svg { width: 18px; height: 18px; }
+
+.worker-card-body { flex: 1; min-width: 0; }
+
+.worker-card-name {
+  font-size: var(--cp-text-sm);
+  font-weight: var(--cp-weight-semibold);
+  color: var(--cp-text-primary);
+}
+
+.worker-card-url {
+  font-size: var(--cp-text-xs);
+  color: var(--cp-text-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.worker-card-actions {
+  display: flex;
+  gap: var(--cp-space-1);
+}
+
+.theme-picker {
+  display: flex;
+  gap: var(--cp-space-2);
+}
+.theme-option {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--cp-space-1);
+  padding: var(--cp-space-3);
+  border: 2px solid var(--cp-border-primary);
+  border-radius: var(--cp-radius-md);
+  background: var(--cp-bg-elevated);
+  cursor: pointer;
+  transition: all var(--cp-duration) var(--cp-ease);
+  font-size: var(--cp-text-xs);
+  font-weight: var(--cp-weight-medium);
+  color: var(--cp-text-secondary);
+  font-family: var(--cp-font-sans);
+}
+.theme-option:hover { border-color: var(--cp-border-secondary); }
+.theme-option.active {
+  border-color: var(--cp-blue-500);
+  color: var(--cp-blue-500);
+  background: rgba(59,130,246,0.05);
+}
+.theme-option svg { width: 22px; height: 22px; }
+
+.lang-picker {
+  display: flex;
+  gap: var(--cp-space-2);
+}
+.lang-option {
+  flex: 1;
+  padding: var(--cp-space-2);
+  border: 2px solid var(--cp-border-primary);
+  border-radius: var(--cp-radius-md);
+  background: var(--cp-bg-elevated);
+  cursor: pointer;
+  transition: all var(--cp-duration) var(--cp-ease);
+  font-size: var(--cp-text-xs);
+  font-weight: var(--cp-weight-semibold);
+  color: var(--cp-text-secondary);
+  font-family: var(--cp-font-sans);
+  text-align: center;
+}
+.lang-option:hover { border-color: var(--cp-border-secondary); }
+.lang-option.active {
+  border-color: var(--cp-blue-500);
+  color: var(--cp-blue-500);
+  background: rgba(59,130,246,0.05);
+}

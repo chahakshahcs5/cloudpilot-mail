@@ -1,0 +1,85 @@
+/* =====================================================
+   CloudPilot Mail — Base Styles
+   ===================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 420px;
+  height: 580px;
+  min-width: 420px;
+  min-height: 580px;
+  max-width: 420px;
+  max-height: 580px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--cp-font-sans);
+  font-size: var(--cp-text-base);
+  line-height: 1.5;
+  color: var(--cp-text-primary);
+  background: var(--cp-bg-primary);
+  transition: background var(--cp-duration) var(--cp-ease), color var(--cp-duration) var(--cp-ease);
+}
+
+a {
+  color: var(--cp-blue-500);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cp-scrollbar-track, rgba(0,0,0,0.04));
+}
+::-webkit-scrollbar-thumb {
+  background: var(--cp-scrollbar-thumb, rgba(0,0,0,0.25));
+  border-radius: var(--cp-radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cp-scrollbar-thumb-hover, rgba(0,0,0,0.4));
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 420px;
+  max-height: 580px;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.content-area {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.view-panel {
+  display: none;
+  padding: var(--cp-space-4);
+  animation: fadeSlideIn 250ms var(--cp-ease) forwards;
+}
+
+.view-panel.active {
+  display: block;
+}

@@ -1,0 +1,239 @@
+/* =====================================================
+   CloudPilot Mail — Role Selection Screen
+   ===================================================== */
+
+.role-select-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--cp-bg-primary);
+  padding: var(--cp-space-6);
+  animation: roleScreenFadeIn 0.5s var(--cp-ease);
+}
+
+@keyframes roleScreenFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.role-select-logo {
+  width: 56px;
+  height: 56px;
+  margin-bottom: var(--cp-space-4);
+  filter: drop-shadow(0 4px 12px rgba(59, 130, 246, 0.3));
+  animation: roleLogoPulse 2s ease-in-out infinite;
+}
+
+@keyframes roleLogoPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.role-select-title {
+  font-size: var(--cp-text-xl);
+  font-weight: var(--cp-weight-bold);
+  color: var(--cp-text-primary);
+  margin: 0 0 var(--cp-space-1) 0;
+  text-align: center;
+}
+
+.role-select-subtitle {
+  font-size: var(--cp-text-sm);
+  color: var(--cp-text-secondary);
+  margin: 0 0 var(--cp-space-6) 0;
+  text-align: center;
+}
+
+.role-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cp-space-3);
+  width: 100%;
+  max-width: 340px;
+}
+
+.role-card {
+  display: flex;
+  align-items: center;
+  gap: var(--cp-space-4);
+  padding: var(--cp-space-5);
+  background: var(--cp-bg-secondary);
+  border: 2px solid var(--cp-border-primary);
+  border-radius: var(--cp-radius-lg);
+  cursor: pointer;
+  transition: all var(--cp-duration) var(--cp-ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.role-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--cp-duration) var(--cp-ease);
+  border-radius: inherit;
+}
+
+.role-card--admin::before {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.06) 0%, rgba(139, 92, 246, 0.06) 100%);
+}
+
+.role-card--user::before {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.06) 0%, rgba(6, 182, 212, 0.06) 100%);
+}
+
+.role-card:hover {
+  border-color: var(--cp-border-secondary);
+  box-shadow: var(--cp-shadow-md);
+  transform: translateY(-2px);
+}
+
+.role-card:hover::before {
+  opacity: 1;
+}
+
+.role-card--admin:hover {
+  border-color: var(--cp-blue-400);
+}
+
+.role-card--user:hover {
+  border-color: var(--cp-emerald-400);
+}
+
+.role-card:active {
+  transform: translateY(0);
+}
+
+.role-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--cp-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.role-card--admin .role-card-icon {
+  background: linear-gradient(135deg, var(--cp-blue-500) 0%, var(--cp-violet-500) 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.role-card--user .role-card-icon {
+  background: linear-gradient(135deg, var(--cp-emerald-500) 0%, #06B6D4 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.role-card-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.role-card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.role-card-title {
+  font-size: var(--cp-text-md);
+  font-weight: var(--cp-weight-semibold);
+  color: var(--cp-text-primary);
+  margin: 0 0 2px 0;
+}
+
+.role-card-desc {
+  font-size: var(--cp-text-xs);
+  color: var(--cp-text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.role-card-arrow {
+  color: var(--cp-text-tertiary);
+  transition: transform var(--cp-duration) var(--cp-ease);
+  flex-shrink: 0;
+}
+
+.role-card-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+.role-card:hover .role-card-arrow {
+  transform: translateX(3px);
+  color: var(--cp-text-secondary);
+}
+
+/* Access gate banner in compose view */
+.access-gate-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--cp-space-3);
+  padding: var(--cp-space-4) var(--cp-space-5);
+  background: #FFF7ED;
+  border: 1px solid #FED7AA;
+  border-radius: var(--cp-radius-md);
+  margin-bottom: var(--cp-space-4);
+}
+
+[data-theme="dark"] .access-gate-banner {
+  background: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.2);
+}
+
+.access-gate-banner-text {
+  flex: 1;
+  font-size: var(--cp-text-sm);
+  color: #92400E;
+  line-height: 1.5;
+}
+
+[data-theme="dark"] .access-gate-banner-text {
+  color: var(--cp-amber-400);
+}
+
+.access-gate-banner-action {
+  flex-shrink: 0;
+  font-size: var(--cp-text-sm);
+  font-weight: var(--cp-weight-semibold);
+  color: var(--cp-emerald-500);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--cp-space-1) var(--cp-space-2);
+  border-radius: var(--cp-radius-sm);
+  transition: background var(--cp-duration) var(--cp-ease);
+  white-space: nowrap;
+}
+
+.access-gate-banner-action:hover {
+  background: rgba(16, 185, 129, 0.1);
+}
+
+/* Role badge in header */
+.role-badge {
+  font-size: 9px;
+  font-weight: var(--cp-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 6px;
+  border-radius: var(--cp-radius-full);
+  line-height: 1;
+}
+
+.role-badge--admin {
+  background: linear-gradient(135deg, var(--cp-blue-500) 0%, var(--cp-violet-500) 100%);
+  color: white;
+}
+
+.role-badge--user {
+  background: linear-gradient(135deg, var(--cp-emerald-500) 0%, #06B6D4 100%);
+  color: white;
+}

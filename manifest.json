@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "CloudPilot Mail",
+  "version": "1.0.0",
+  "description": "Your Cloudflare Temp Email Command Center — manage addresses, read emails, send mail, and administrate your cloudflare_temp_email workers.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "CloudPilot Mail"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}
