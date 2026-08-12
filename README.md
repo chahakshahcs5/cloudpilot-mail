@@ -10,14 +10,16 @@
 
 ## ✨ Features
 
-- **🌐 Multi-Worker Support**: Configure and switch seamlessly between multiple `cloudflare_temp_email` Worker instances.
-- **✉️ Address Management**: Search, create custom prefix/subdomain addresses, generate random subdomains, copy JWT credentials/login links, clear inbox, and delete mailboxes.
-- **📥 Real-Time Inbox**: View received emails, inspect HTML previews securely in sandboxed view, and automatically extract verification (OTP) codes with one-click copy.
-- **📤 Sent & Unknown Mail**: Track system outbound emails and catch emails sent to non-existent addresses.
-- **✍️ Send Mail**: Compose and send emails directly using any of your configured mailbox identities.
+- **👑 Dual Role Operating System**: Switch effortlessly between **Admin Mode** (full worker control, stats analytics, sender access rules, password viewing, mailbox cleanup) and **User Mode** (individual address management, balance check, access requests).
+- **🛡️ Sender Access Control**: Grant, modify, and monitor sender permissions, account balances, and request access workflows.
+- **🌐 Multi-Worker Management**: Configure, test connection health, and switch seamlessly between multiple `cloudflare_temp_email` Worker instances.
+- **✉️ Mailbox Command Center**: Create custom prefix/subdomain addresses, generate random subdomains, copy JWT credentials and auto-login links, clear inbox, or delete mailboxes.
+- **📥 Real-Time Inbox & Mail Reader**: View incoming emails, inspect HTML previews securely in a sandboxed viewer, extract verification (OTP) codes automatically with one-click copy, and iterate between messages with inline navigation.
+- **📤 Outbound & Unknown Mail**: Track system outbound emails and inspect mail sent to non-existent/catch-all addresses.
+- **✍️ Rich Email Composer**: Compose and send emails directly using any of your authorized mailbox identities with custom display names.
+- **🎯 Custom Scrollable Controls**: Custom select dropdown system (`enhanceSelect`) ensuring clean, isolated vertical scrolling within the 420x580 popup frame without native OS popover overflow.
 - **🌍 Multilingual (i18n)**: Native English, Simplified Chinese (`简体中文`), and Traditional Chinese (`繁體中文`) support with instant language switching.
 - **🎨 Premium UI & Themes**: Glassmorphism design system supporting **Light Mode**, **Dark Mode**, and **System Sync**.
-- **⏱️ Auto-Refresh**: Configurable background polling interval to keep your inbox updated.
 
 ---
 
@@ -25,9 +27,9 @@
 
 - **Extension Specification**: Manifest V3 (Chrome, Edge, Brave, Opera, Firefox compatible)
 - **Language**: TypeScript 5.7
-- **Bundler**: `esbuild` for ultra-fast compilation
-- **Styling**: Vanilla CSS with Design System Tokens, CSS Modules (`variables.css`, `components.css`, `header.css`, etc.)
-- **Icons**: Custom SVG vector icon library & PNG icons
+- **Bundler**: `esbuild` for ultra-fast JS & CSS compilation
+- **Styling**: Vanilla CSS with Design System Tokens & modular CSS structure (`variables.css`, `components.css`, `header.css`, etc.)
+- **Icons**: Custom SVG vector icon library & sharp multi-resolution PNG assets
 
 ---
 
@@ -36,7 +38,7 @@
 ```text
 temp-mail-cf-ext/
 ├── manifest.json            # Manifest V3 extension configuration
-├── build.mjs                # esbuild bundle & static copy script
+├── build.mjs                # esbuild JS & CSS bundle script
 ├── generate-icons.mts       # Icon PNG generator script
 ├── package.json             # Project dependencies & build scripts
 ├── tsconfig.json            # TypeScript configuration
@@ -44,30 +46,38 @@ temp-mail-cf-ext/
 ├── src/
 │   ├── popup.html           # Main popup HTML container
 │   ├── css/                 # Modular stylesheets
-│   │   ├── variables.css    # Design tokens (colors, light/dark themes)
-│   │   ├── base.css         # Reset & layout styles
-│   │   ├── components.css   # Buttons, cards, inputs, modals, toasts, badges
+│   │   ├── variables.css    # Design system tokens (colors, light/dark themes)
+│   │   ├── base.css         # Reset & layout viewport bounds
+│   │   ├── components.css   # Buttons, cards, inputs, custom select, modals, toasts, badges
 │   │   ├── header.css       # Navigation header & worker bar
 │   │   ├── dashboard.css    # Analytics overview grid
 │   │   ├── email.css        # Mail lists & reader detail view
 │   │   ├── settings.css     # Worker profiles & preference pickers
 │   │   ├── utilities.css    # Keyframes, spinners & helper classes
+│   │   ├── role-select.css  # Role selection screen styles
 │   │   └── styles.css       # Main CSS bundle entrypoint
 │   └── ts/                  # TypeScript source modules
 │       ├── app.ts           # Main application orchestrator
-│       ├── api.ts           # Type-safe cloudflare_temp_email API client
 │       ├── i18n.ts          # Internationalization dictionary & state
 │       ├── storage.ts       # Typed chrome.storage.local wrapper
 │       ├── icons.ts         # Inline SVG icon library
-│       ├── utils.ts         # Helper utilities (toast, clipboard, formatting)
+│       ├── utils.ts         # Helper utilities (toast, clipboard, custom select enhancer)
+│       ├── api/             # Type-safe API client layer
+│       │   ├── admin.ts     # Admin endpoints (stats, addresses, mails, sendbox, send access)
+│       │   ├── user.ts      # User endpoints (user_api mails, address JWT, settings)
+│       │   ├── common.ts    # HTTP request handler & paginated result normalizer
+│       │   ├── index.ts     # Main API entrypoint dispatcher
+│       │   └── types.ts     # API interface definitions
 │       └── views/           # Modular view controllers
-│           ├── dashboard.ts # Stats overview tab
-│           ├── addresses.ts # Mailbox management tab
-│           ├── inbox.ts     # Email list & reader tab
-│           ├── sent.ts      # Sent email log tab
-│           ├── unknown.ts   # Unknown address email log tab
-│           ├── compose.ts   # Send email tab
-│           └── settings.ts  # Worker settings & UI preferences tab
+│           ├── dashboard.ts   # Stats overview tab
+│           ├── addresses.ts   # Mailbox management tab
+│           ├── inbox.ts       # Email list & reader modal tab
+│           ├── sent.ts        # Sent email log tab
+│           ├── send_access.ts # Sender access control tab
+│           ├── unknown.ts     # Unknown address email log tab
+│           ├── compose.ts     # Send email tab
+│           ├── role_select.ts # Role picker view
+│           └── settings.ts    # Worker settings & UI preferences tab
 ```
 
 ---
@@ -83,8 +93,8 @@ temp-mail-cf-ext/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/temp-mail-cf-ext.git
-   cd temp-mail-cf-ext
+   git clone https://github.com/chahakshahcs5/cloudpilot-mail.git
+   cd cloudpilot-mail
    ```
 
 2. Install dependencies:
@@ -96,9 +106,9 @@ temp-mail-cf-ext/
    ```bash
    npm run build
    ```
-   *The compiled extension will be output to the `dist/` directory.*
+   *The compiled extension assets (JS, CSS, HTML, manifest) will be generated in `dist/`.*
 
-4. For development with auto-rebuild on file change:
+4. For development with auto-rebuild on file changes:
    ```bash
    npm run watch
    ```
